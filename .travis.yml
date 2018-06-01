@@ -37,7 +37,7 @@ jobs:
         - DISTRO=centos
       script: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
 
-- stages:
+stages:
     - alpine
     - ubuntu
     - debian
