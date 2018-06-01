@@ -27,7 +27,8 @@ jobs:
     - stage: docker-alpine
       env:
         - DISTRO=alpine
-      script: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
+      script: 
+        - docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
 
     - stage: docker-ubuntu
       env:
