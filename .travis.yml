@@ -29,21 +29,28 @@ jobs:
         - DISTRO=alpine
       script: 
         - docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
+        - docker push $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO
 
     - stage: docker-ubuntu
       env:
         - DISTRO=ubuntu
-      script: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
+      script: 
+        - docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
+        - docker push $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO
 
     - stage: docker-debian
       env:
         - DISTRO=debian
-      script: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
+      script: 
+        - docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
+        - docker push $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO
 
     - stage: docker-centos
       env:
         - DISTRO=centos
-      script: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
+      script: 
+        - docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
+        - docker push $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO
 
 stages:
     - alpine
