@@ -1,7 +1,12 @@
 sudo: required
 
-language: node
+language: node_js
+node_js:
+  - "9"
 
+notifications:
+  email: false
+  
 services:
   - docker
 
