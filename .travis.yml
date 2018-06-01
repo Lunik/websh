@@ -11,13 +11,16 @@ services:
   - docker
 
 before_install:
-  - npm install -g webpack-cli
-
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+  - npm install -g webpack-cli
+  - npm install
+  - npm run build
 
 env:
   global:
     - IMAGE_NAME=websh
+    - NODE_ENV=dev
 
 jobs:
   include:
