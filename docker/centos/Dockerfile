@@ -1,11 +1,11 @@
-FROM alpine:latest
+FROM centos:latest
 
-RUN apk --update --no-cache add \
-  nodejs \
-  python \
+RUN curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -
+RUN yum install -y nodejs \
   make \
-  g++ \
-  sudo
+  gcc-c++ \
+  sudo \
+  && yum clean all
 
 ENV NODE_ENV=production
 WORKDIR /app
@@ -15,7 +15,7 @@ RUN npm install
 
 COPY ./build /app/build
 
-COPY ./docker/alpine/entrypoint.sh /entrypoint.sh
+COPY ./docker/centos/entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["/usr/bin/env", "npm", "start"]
