@@ -1,7 +1,8 @@
 FROM centos:latest
 
-RUN curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -
-RUN yum install -y nodejs \
+ADD https://rpm.nodesource.com/setup_10.x /tmp/nodejs.sh
+RUN bash /tmp/nodejs.sh \
+  && yum install -y nodejs \
   make \
   gcc-c++ \
   sudo \
