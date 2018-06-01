@@ -4,7 +4,7 @@ if [ -z "$USERNAME" ]; then
   USERNAME="demo"
 fi
 
-adduser $USERNAME
+useradd $USERNAME
 passwd $USERNAME -d
 
 echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
