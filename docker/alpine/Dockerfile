@@ -2,10 +2,16 @@ FROM alpine:latest
 
 RUN apk --update --no-cache add \
   nodejs \
+  nodejs-npm \
   python \
   make \
   g++ \
-  sudo
+  sudo \
+  bash
+
+ADD https://raw.githubusercontent.com/KittyKatt/screenFetch/master/screenfetch-dev \
+  /bin/screenfetch
+RUN chmod 755 /bin/screenfetch
 
 ENV NODE_ENV=production
 WORKDIR /app

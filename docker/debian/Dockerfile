@@ -10,6 +10,10 @@ RUN apt-get update \
   sudo \
   && apt-get clean
 
+ADD https://raw.githubusercontent.com/KittyKatt/screenFetch/master/screenfetch-dev \
+  /bin/screenfetch
+RUN chmod 755 /bin/screenfetch
+
 ENV NODE_ENV=production
 WORKDIR /app
 
@@ -18,7 +22,7 @@ RUN npm install
 
 COPY ./build /app/build
 
-COPY ./docker/centos/entrypoint.sh /entrypoint.sh
+COPY ./docker/debian/entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["/usr/bin/env", "npm", "start"]

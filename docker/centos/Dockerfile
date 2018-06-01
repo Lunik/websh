@@ -8,6 +8,10 @@ RUN bash /tmp/nodejs.sh \
   sudo \
   && yum clean all
 
+ADD https://raw.githubusercontent.com/KittyKatt/screenFetch/master/screenfetch-dev \
+  /bin/screenfetch
+RUN chmod 755 /bin/screenfetch
+
 ENV NODE_ENV=production
 WORKDIR /app
 
