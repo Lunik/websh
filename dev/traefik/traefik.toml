@@ -1,0 +1,38 @@
+#
+# docker run -d -p 8080:80 -v "$(pwd)"/traefik.toml:/traefik.toml -v /var/run/docker.sock:/var/run/docker.sock  -l traefik.backend=proxy -l traefik.frontend.rule=Host:traefik.local -l traefik.enable=true -l traefik.port=8080 traefik --configfile="/traefik.toml"
+#
+################################################################
+# Global configuration
+################################################################
+
+logLevel = "DEBUG"
+
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+    [entryPoints.http]
+    address = ":80"
+    compress = true
+    [entryPoints.api]
+    address = ":8080"
+    compress = true
+
+################################################################
+# Web configuration backend
+################################################################
+
+[api]
+
+entryPoint = "api"
+dashboard = true
+
+################################################################
+# Docker configuration backend
+################################################################
+
+# Enable Docker configuration backend
+[docker]
+
+watch = true
+
+domain = "local"
