@@ -52,6 +52,12 @@ jobs:
         - docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
         - docker push $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO
 
+    - stage: docker-fedora
+      env:
+        - DISTRO=fedora
+      script: 
+        - docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO -f docker/$DISTRO/Dockerfile .
+        - docker push $DOCKER_USERNAME/$IMAGE_NAME:$DISTRO
 stages:
     - alpine
     - ubuntu
