@@ -24,4 +24,6 @@ COPY ./build /app/build
 COPY ./docker/alpine/entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
+EXPOSE 3000
+
 CMD ["/usr/bin/env", "npm", "start"]
